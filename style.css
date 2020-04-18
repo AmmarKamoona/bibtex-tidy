@@ -186,6 +186,7 @@ a {
 .suboptions textarea {
 	resize: vertical;
 	width: 100%;
+	height: 100px;
 }
 #sidebar input[type='number'] {
 	display: inline-block;
