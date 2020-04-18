@@ -12,4 +12,3 @@ node_modules/
 .npm
 *.tgz
 package-lock.json
-test/*

@@ -80,7 +80,6 @@ const optionDocs = {};
 for (const option of bibtexTidy.options) {
 	optionDocs[option.key] = option;
 }
-console.log(optionDocs);
 
 for (let $label of $$('label[data-option]')) {
 	const key = $label.dataset.option;
@@ -129,10 +128,10 @@ $('#tidy').addEventListener('click', () => {
 			options.sortFields.checked &&
 			options.sortFieldList.value.split(/[\n\t ,]+/),
 		stripComments: options.stripComments.checked,
+		tidyComments: options.tidyComments.checked,
 		encodeUrls: options.encodeUrls.checked,
 		escape: options.escape.checked,
 	};
-	console.log(options, opt);
 	setTimeout(() => {
 		try {
 			result = bibtexTidy.tidy(bibtex, opt);
@@ -187,3 +186,6 @@ $('#dlgclose').addEventListener(
 );
 $('#dlg').addEventListener('click', () => ($('#dlg').style.display = 'none'));
 $('#dlginner').addEventListener('click', (e) => e.stopPropagation());
+
+// make editor available for tests
+window.cmEditor = cmEditor;
