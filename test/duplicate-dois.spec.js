@@ -1,4 +1,4 @@
-import { bibtex, test } from './utils';
+import { bibtex, test, checkSame } from './utils.js';
 
 const input = bibtex`
 @article{a,
@@ -14,7 +14,7 @@ test(
 	'duplicate doi warnings',
 	async (t, tidy) => {
 		const tidied = await tidy(input, { duplicates: ['doi'] });
-		t.same(tidied.warnings.length, 1);
+		checkSame(t, tidied.warnings.length, 1);
 	},
 	{ apiOnly: true }
 );

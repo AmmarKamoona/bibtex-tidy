@@ -1,4 +1,4 @@
-import { bibtex, test } from './utils';
+import { bibtex, test, checkSame } from './utils.js';
 
 const input = bibtex`
 @ARTICLE {feinberg1983technique,
@@ -16,7 +16,7 @@ test(
 	'duplicate key warnings (no duplicates)',
 	async (t, tidy) => {
 		const tidied = await tidy(input, { escape: false });
-		t.same(tidied.warnings, []);
+		checkSame(t, tidied.warnings.length, 0);
 	},
 	{ apiOnly: true }
 );

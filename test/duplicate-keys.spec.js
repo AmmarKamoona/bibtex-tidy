@@ -1,4 +1,4 @@
-import { bibtex, test } from './utils';
+import { bibtex, test, checkSame } from './utils.js';
 
 const input = bibtex`
 %references
@@ -74,48 +74,8 @@ title = {Methods for Research}
 test(
 	'duplicate key warnings',
 	async (t, tidy) => {
-		const tidied = await tidy(input, { escape: true }),
-			warnings = [
-				{
-					entry: {
-						itemtype: 'entry',
-						key: 'Smith2009',
-						type: 'inproceedings',
-						enclosed: 'braces',
-						fields: [
-							{
-								name: 'author',
-								raw: '"Caroline JA Smith"',
-								value: 'Caroline JA Smith',
-								datatype: 'quoted',
-							},
-							{ name: 'year', raw: '2009', value: 2009, datatype: 'number' },
-							{
-								name: 'month',
-								raw: 'dec',
-								value: 'dec',
-								datatype: 'identifier',
-							},
-							{
-								name: 'title',
-								raw: '{{Quantum somethings}}',
-								value: '{Quantum somethings}',
-								datatype: 'braced',
-							},
-							{
-								name: 'journal',
-								raw: '{Journal of {B}lah}',
-								value: 'Journal of {B}lah',
-								datatype: 'braced',
-							},
-						],
-					},
-					code: 'DUPLICATE_KEY',
-					message: 'Smith2009 is a duplicate entry key.',
-				},
-			];
-		delete tidied.warnings[0].entry.raw;
-		t.same(tidied.warnings, warnings);
+		const tidied = await tidy(input, { escape: true });
+		checkSame(t, tidied.warnings.length, 1);
 	},
 	{ apiOnly: true }
 );

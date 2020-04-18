@@ -111,12 +111,10 @@ const tidy = (input, options = {}) =>
 			if (options.duplicates === true) {
 				options.duplicates = ['doi', 'citation', 'abstract'];
 			}
-			if (options.duplicates.includes('key')) getOpt('uniqKEY').checked = true;
-			if (options.duplicates.includes('doi')) getOpt('uniqDOI').checked = true;
-			if (options.duplicates.includes('citation'))
-				getOpt('uniqCIT').checked = true;
-			if (options.duplicates.includes('abstract'))
-				getOpt('uniqABS').checked = true;
+			getOpt('uniqKEY').checked = options.duplicates.includes('key');
+			getOpt('uniqDOI').checked = options.duplicates.includes('doi');
+			getOpt('uniqCIT').checked = options.duplicates.includes('citation');
+			getOpt('uniqABS').checked = options.duplicates.includes('abstract');
 		} else {
 			getOpt('duplicates').checked = false;
 		}

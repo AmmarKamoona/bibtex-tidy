@@ -144,7 +144,10 @@ $('#tidy').addEventListener('click', () => {
 			let warnings = result.warnings.filter(
 				(w) => w.code !== 'DUPLICATE_ENTRY'
 			);
-			$('#feedback').innerHTML += warnings.map((dupe) => dupe.message).join('');
+			$('#feedback').innerHTML +=
+				'<ul>' +
+				warnings.map((dupe) => `<li>${dupe.message}</li>`).join('') +
+				'</ul>';
 
 			if (opt.merge) {
 				let dupes = result.warnings.filter((w) => w.code === 'DUPLICATE_ENTRY');
