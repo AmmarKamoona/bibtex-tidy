@@ -131,6 +131,9 @@ $('#tidy').addEventListener('click', () => {
 		tidyComments: options.tidyComments.checked,
 		encodeUrls: options.encodeUrls.checked,
 		escape: options.escape.checked,
+		trailingCommas: options.trailingCommas.checked,
+		removeEmptyFields: options.removeEmptyFields.checked,
+		lowercase: options.lowercase.checked,
 	};
 	setTimeout(() => {
 		try {
