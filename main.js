@@ -1,4 +1,5 @@
 /* jshint esversion: 6 */
+
 /* global CodeMirror, bibtexTidy */
 CodeMirror.defineSimpleMode('simplemode', {
 	// bibtex syntax highlighting
@@ -113,6 +114,7 @@ $('#tidy').addEventListener('click', () => {
 		space: Number(options.spaces.value),
 		tab: options.indent.value === 'tabs',
 		align: options.align.checked ? Number(options.alignnum.value) : 0,
+		wrap: options.wrap.checked ? Number(options.wrapnum.value) : false,
 		duplicates: options.duplicates.checked
 			? [
 					options.uniqKEY.checked ? 'key' : null,
@@ -122,6 +124,9 @@ $('#tidy').addEventListener('click', () => {
 			  ].filter((a) => a !== null)
 			: false,
 		merge: options.merge.checked ? options.mergeStrategy.value : false,
+		enclosingBraces:
+			options.enclosingBraces.checked &&
+			options.enclosingBracesList.value.split(/[\n\t ,]+/),
 		stripEnclosingBraces: options.stripEnclosingBraces.checked,
 		dropAllCaps: options.dropAllCaps.checked,
 		sortFields:

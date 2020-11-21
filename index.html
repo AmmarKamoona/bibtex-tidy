@@ -77,6 +77,14 @@ Click Tidy to clean up the entries below
 							<input name="alignnum" type="number" value="13" />
 						</div>
 					</label>
+					<label data-option="wrap">
+						<input type="checkbox" />
+						<span class="name"></span>
+						<div class="suboptions">
+							Wrap values at column:
+							<input name="wrapnum" type="number" value="80" />
+						</div>
+					</label>
 				</details>
 
 				<details open>
@@ -89,6 +97,16 @@ Click Tidy to clean up the entries below
 					<label data-option="numeric">
 						<input type="checkbox" checked="checked" />
 						<span class="name"></span>
+					</label>
+					<label data-option="enclosingBraces">
+						<input type="checkbox" />
+						<span class="name"></span>
+						<div class="suboptions">
+							Fields enclose in double braces: <br />
+							<textarea name="enclosingBracesList">title</textarea><br />
+							Space delimited, e.g: <code>title journal</code>.
+							<code>-year author</code>.
+						</div>
 					</label>
 					<label data-option="stripEnclosingBraces">
 						<input type="checkbox" />
