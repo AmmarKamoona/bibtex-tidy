@@ -139,6 +139,7 @@ $('#tidy').addEventListener('click', () => {
 		trailingCommas: options.trailingCommas.checked,
 		removeEmptyFields: options.removeEmptyFields.checked,
 		lowercase: options.lowercase.checked,
+		maxAuthors: options.maxAuthors.checked ? Number(options.maxAuthorsNum.value) : undefined
 	};
 	setTimeout(() => {
 		try {
